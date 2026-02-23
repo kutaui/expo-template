@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getLocales, Locale } from "expo-localization";
@@ -58,13 +58,14 @@ const translationGetters = {
 const i18n = new I18n(translationGetters);
 i18n.enableFallback = true;
 
-(i18n as any).missingTranslation = function(scope: string, options: any) {
-    const originalLocale = i18n.locale;
-    i18n.locale = DEFAULT_LANGUAGE_CODE;
-    const result = i18n.t(scope, options);
-    i18n.locale = originalLocale;
-    return result;
-};
+i18n.missingTranslation.register("fallback", (i18nParam, scope, options) => {
+    const originalLocale = i18nParam.locale;
+    i18nParam.locale = DEFAULT_LANGUAGE_CODE;
+    const result = i18nParam.t(scope, Object.assign({}, options, { missingBehavior: "guess" }));
+    i18nParam.locale = originalLocale;
+    return result as string;
+});
+i18n.missingBehavior = "fallback";
 
 const deviceLocale = array.first(getLocales()) as Locale;
 

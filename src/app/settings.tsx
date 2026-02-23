@@ -15,7 +15,6 @@ import useLocale from '@/hooks/useLocale';
 
 export default function SettingsScreen() {
     const { t, locale } = useLocale('view.settings');
-    const { isPremium, subscriptionStatus } = useConvexUser();
     const router = useRouter();
     const isDark = useColorScheme() === 'dark';
     const bottomSheetRef = React.useRef<BottomSheetModal>(null);
@@ -71,86 +70,6 @@ export default function SettingsScreen() {
                         <ChevronRight size={20} color={isDark ? '#6b7280' : '#9ca3af'} />
                     </View>
                 </Pressable>
-
-                {/* Subscription Card */}
-                <View
-                    className="bg-card rounded-2xl p-5 border border-border"
-                    style={{
-                        shadowColor: '#E07A5F',
-                        shadowOffset: { width: 0, height: 2 },
-                        shadowOpacity: isPremium ? 0.15 : 0,
-                        shadowRadius: 8,
-                    }}
-                >
-                    <View className="flex-row items-center justify-between mb-4">
-                        <View className="flex-row items-center gap-3">
-                            <View
-                                className="p-2.5 rounded-xl"
-                                style={{
-                                    backgroundColor: isPremium
-                                        ? (isDark ? '#E07A5F20' : '#FFF5E6')
-                                        : (isDark ? '#2c2c2e' : '#f3f4f6')
-                                }}
-                            >
-                                {isPremium ? (
-                                    <Crown size={22} color="#F4A261" />
-                                ) : (
-                                    <Sparkles size={22} color={isDark ? '#6b7280' : '#9ca3af'} />
-                                )}
-                            </View>
-                            <View>
-                                <Text className="text-base font-semibold text-foreground">
-                                    {t('labels.subscription')}
-                                </Text>
-                                <Text className="text-sm text-muted-foreground">
-                                    {t('labels.currentPlan')}
-                                </Text>
-                            </View>
-                        </View>
-                        <View
-                            className="px-3 py-1.5 rounded-full"
-                            style={{
-                                backgroundColor: isPremium
-                                    ? (isDark ? '#E07A5F30' : '#FFF5E6')
-                                    : (isDark ? '#2c2c2e' : '#f3f4f6')
-                            }}
-                        >
-                            <Text
-                                className="text-sm font-bold"
-                                style={{ color: isPremium ? '#E07A5F' : (isDark ? '#9ca3af' : '#6b7280') }}
-                            >
-                                {subscriptionStatus === 'pro' ? 'Pro' : subscriptionStatus === 'basic' ? 'Basic' : t('labels.free')}
-                            </Text>
-                        </View>
-                    </View>
-
-                    {isPremium ? (
-                        <Pressable
-                            onPress={handleUpgrade}
-                            className="bg-[#E07A5F]/10 rounded-xl py-3 px-4"
-                            style={({ pressed }) => ({
-                                opacity: pressed ? 0.7 : 1,
-                            })}
-                        >
-                            <Text className="text-[#E07A5F] font-semibold text-center">
-                                {t('labels.manageSubscription')}
-                            </Text>
-                        </Pressable>
-                    ) : (
-                        <Pressable
-                            onPress={handleUpgrade}
-                            className="bg-[#E07A5F] rounded-xl py-3 px-4"
-                            style={({ pressed }) => ({
-                                opacity: pressed ? 0.9 : 1,
-                                transform: [{ scale: pressed ? 0.98 : 1 }],
-                            })}
-                        >
-                            <Text className="text-white font-semibold text-center">
-                                Upgrade to Pro
-                            </Text>
-                        </Pressable>
-                    )}
-                </View>
 
                 {/* Support */}
                 <Pressable

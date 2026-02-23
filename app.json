@@ -24,8 +24,6 @@
     },
     "plugins": [
       "expo-router",
-      "react-native-vision-camera",
-      "@sentry/react-native",
       "expo-build-properties",
       "expo-font",
       "expo-localization",
