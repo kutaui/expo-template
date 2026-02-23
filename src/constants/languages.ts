@@ -1,0 +1,38 @@
+/**
+ * Language names in their native form
+ * Maps language codes to their native language names
+ */
+export const LANGUAGE_NAMES: Record<string, string> = {
+    ar: 'العربية',
+    ca: 'Català',
+    cn: '中文',
+    cs: 'Čeština',
+    da: 'Dansk',
+    de: 'Deutsch',
+    el: 'Ελληνικά',
+    en: 'English',
+    es: 'Español',
+    fi: 'Suomi',
+    fr: 'Français',
+    he: 'עברית',
+    hi: 'हिन्दी',
+    hr: 'Hrvatski',
+    hu: 'Magyar',
+    id: 'Bahasa Indonesia',
+    it: 'Italiano',
+    ja: '日本語',
+    ko: '한국어',
+    ms: 'Bahasa Melayu',
+    nl: 'Nederlands',
+    no: 'Norsk',
+    pl: 'Polski',
+    pt: 'Português',
+    ro: 'Română',
+    ru: 'Русский',
+    sk: 'Slovenčina',
+    sv: 'Svenska',
+    th: 'ไทย',
+    tr: 'Türkçe',
+    uk: 'Українська',
+    vi: 'Tiếng Việt',
+};

@@ -1,2 +1,49 @@
 @import 'tailwindcss';
 @import 'uniwind';
+
+@theme {
+  --font-weight-thin: 100;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+}
+
+@layer theme {
+  :root {
+    @variant dark {
+      --color-background: #FFF9F0;
+      --color-foreground: #2D2D2D;
+      --color-primary: #E07A5F;
+      --color-primary-dark: #CB6045;
+      --color-card: #FFFFFF;
+      --color-border: #E5E5E5;
+      --color-success: #10b981;
+      --color-error: #ef4444;
+      --color-muted: #5C5C5C;
+      --color-accent-rose: #F2D5D0;
+      --color-accent-rose-text: #8A3C3C;
+      --color-accent-sage: #DAE5D8;
+      --color-accent-sage-text: #3D523F;
+    }
+
+    @variant light {
+      --color-background: #FFF9F0;
+      --color-foreground: #2D2D2D;
+      --color-primary: #E07A5F;
+      --color-primary-dark: #CB6045;
+      --color-card: #FFFFFF;
+      --color-border: #E5E5E5;
+      --color-success: #10b981;
+      --color-error: #ef4444;
+      --color-muted: #5C5C5C;
+      --color-accent-rose: #F2D5D0;
+      --color-accent-rose-text: #8A3C3C;
+      --color-accent-sage: #DAE5D8;
+      --color-accent-sage-text: #3D523F;
+    }
+  }
+}
